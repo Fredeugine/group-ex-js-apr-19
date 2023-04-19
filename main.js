@@ -10,3 +10,57 @@ function isPrime(num) {
     if (num % i == 0 || num % (i + 2) == 0) return false;
   return true;
 }
+class BaseNumber{
+  constructor(number) {
+    this.number = number
+  }
+  getNumber(){
+    return this.number()
+  }
+  get GNumber(){
+    return this.number
+  }
+  set GNumber(num){
+    return this.number = num
+  }
+}
+
+class NumberBucket extends BaseNumber{
+  constructor() {
+    super();
+  }
+}
+
+class PrimeBucket extends BaseNumber{
+  constructor() {
+    super();
+  }
+}
+// Go through the data array, and for each number, create either a NumberBucket object, or a PrimeBucket object.
+//     Store all these objects in an "numbers" array.
+//
+//     Go through this "numbers" array, and call .getNumber() for all the objects there, and print out the result.
+let nBucket = {}
+let nPrimeBucket = {}
+numbers = []
+  for (let i = 0; i < dataArr.length; i++) {
+      nPrimeBucket[i] = dataArr[i]
+      nBucket[i] = dataArr[i]
+  }
+// numbers.push( nBucket)
+// numbers.push(nPrimeBucket)
+// for (const number of numbers) {
+//   console.log(number)
+// }
+
+numbers.push(nPrimeBucket)
+for (const number of numbers) {
+  for (const key in number) {
+    if(isPrime(number[key])){
+    console.log('nPrimeBucket: ' + number[key])
+    }
+    else {
+      console.log('nBucket: ' + number[key])
+    }
+  }
+}
